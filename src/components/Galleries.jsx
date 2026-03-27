@@ -2,11 +2,16 @@
 import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import "./Galleries.css";
 
-const ALL_PHOTOS = Array.from({ length: 314 }, (_, index) => ({
+const ARCHIVE_PHOTOS = Array.from({ length: 314 }, (_, index) => ({
   src: `/img/slides/d${index + 1}.jpg`,
   alt: `ProWIFETA gallery image ${index + 1}`,
 }));
-const STORYBOARD_INDICES = [5, 46, 97, 148, 214, 287];
+const EDWENASE_PHOTOS = Array.from({ length: 23 }, (_, index) => ({
+  src: `/img/events/edwenase-edit/edwenase-edit-${String(index + 1).padStart(2, "0")}.jpg`,
+  alt: `Edwenase event photo ${index + 1}`,
+}));
+const ALL_PHOTOS = [...EDWENASE_PHOTOS, ...ARCHIVE_PHOTOS];
+const STORYBOARD_INDICES = [0, 3, 7, 11, 17, 22];
 const AUTO_SLIDE_INTERVAL = 4000;
 const AUTO_RESUME_DELAY = 3000;
 const THUMBNAIL_WINDOW = 7;
@@ -101,7 +106,8 @@ export default function Galleries() {
           </h3>
           <p className="gallery-overview-text">
             The gallery captures the atmosphere of ProWIFETA in practice, from shared
-            learning sessions to moments of community, visibility, and celebration.
+            learning sessions to moments of community, visibility, and celebration,
+            including the latest Edwenase event photo update.
           </p>
         </div>
 

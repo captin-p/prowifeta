@@ -936,6 +936,60 @@ button {
   gap: 0.5rem 1.5rem;
 }
 
+.footer-social {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.footer-social-title {
+  margin: 0;
+  color: #ffffff;
+  font-size: 0.86rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.footer-social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.footer-social-chip {
+  display: inline-grid;
+  gap: 0.3rem;
+  min-width: 240px;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  color: rgba(255, 255, 255, 0.82);
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.footer-social-chip strong {
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+
+.footer-social-chip span {
+  line-height: 1.55;
+}
+
+a.footer-social-chip:hover,
+a.footer-social-chip:focus-visible {
+  transform: translateY(-2px);
+  color: var(--brand-accent);
+  border-color: rgba(233, 196, 106, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+}
+
 #about,
 #goals,
 #gallery,
@@ -950,7 +1004,8 @@ button {
 .hero-scroll-link:focus-visible,
 .join-action:focus-visible,
 .footer-links button:focus-visible,
-.footer-links a:focus-visible {
+.footer-links a:focus-visible,
+.footer-social-chip:focus-visible {
   outline: 2px solid var(--brand-accent);
   outline-offset: 4px;
 }
@@ -1108,6 +1163,11 @@ button {
   .footer-links {
     gap: 0.75rem 1rem;
   }
+
+  .footer-social-chip {
+    min-width: 0;
+    width: 100%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1118,7 +1178,8 @@ button {
   .hero-scroll-link,
   .join-action,
   .footer-links button,
-  .footer-links a {
+  .footer-links a,
+  .footer-social-chip {
     transition: none;
   }
 }

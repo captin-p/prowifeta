@@ -18,10 +18,15 @@ import "./LandingPage.css";
 import Galleries from "./Galleries.jsx";
 
 const JOIN_URL = "https://forms.gle/SsHAeFN9ncR7PiFz8";
+const FACEBOOK_PAGE_NAME = "Professional Women in Fashion Education and Training";
+const TIKTOK_HANDLE = "@ProWIFETA";
+const TIKTOK_URL = "https://www.tiktok.com/@ProWIFETA";
 const HERO_SLIDES = Array.from({ length: 63 }, (_, index) => ({
   image: `/img/slides/d${index + 1}.jpg`,
 }));
-const GALLERY_IMAGE_COUNT = 314;
+const ARCHIVE_IMAGE_COUNT = 314;
+const EDWENASE_IMAGE_COUNT = 23;
+const GALLERY_IMAGE_COUNT = ARCHIVE_IMAGE_COUNT + EDWENASE_IMAGE_COUNT;
 const HERO_AUDIENCES = ["Lecturers", "Trainers", "Researchers", "Mentors"];
 const VALUE_PROPOSITIONS = [
   {
@@ -525,7 +530,8 @@ function LandingPage() {
               </div>
               <p className="section-summary">
                 Explore the atmosphere behind ProWIFETA programs, leadership gatherings,
-                and shared learning moments across the network.
+                and shared learning moments across the network, including the newest
+                Edwenase event images.
               </p>
             </div>
 
@@ -687,6 +693,25 @@ function LandingPage() {
             <a href={JOIN_URL} target="_blank" rel="noopener noreferrer">
               Join Us
             </a>
+          </div>
+
+          <div className="footer-social" aria-label="Official social channels">
+            <p className="footer-social-title">Follow ProWIFETA</p>
+            <div className="footer-social-links">
+              <span className="footer-social-chip">
+                <strong>Facebook</strong>
+                <span>{FACEBOOK_PAGE_NAME}</span>
+              </span>
+              <a
+                className="footer-social-chip"
+                href={TIKTOK_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>TikTok</strong>
+                <span>{TIKTOK_HANDLE}</span>
+              </a>
+            </div>
           </div>
 
           <div className="footer-meta">
