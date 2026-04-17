@@ -21,6 +21,8 @@ const JOIN_URL = "https://forms.gle/SsHAeFN9ncR7PiFz8";
 const FACEBOOK_PAGE_NAME = "Professional Women in Fashion Education and Training";
 const TIKTOK_HANDLE = "@ProWIFETA";
 const TIKTOK_URL = "https://www.tiktok.com/@ProWIFETA";
+const YOUTUBE_HANDLE = "@prowifeta-n4c";
+const YOUTUBE_URL = "https://youtube.com/@prowifeta-n4c";
 const HERO_SLIDES = Array.from({ length: 63 }, (_, index) => ({
   image: `/img/slides/d${index + 1}.jpg`,
 }));
@@ -123,9 +125,9 @@ const MEMBERSHIP_STEPS = [
 const MEMBERS = [
   {
     image: "/card/v1.jpg",
-    name: "Phyllis Mensah",
+    name: "Phyllis Mensah (PhD)",
     role: "Director",
-    bio: "A seasoned fashion designer and educator with over 20 years of experience and multiple advanced degrees, currently lecturing at AAMUSTED while pursuing a doctorate.",
+    bio: "A seasoned fashion designer and educator with over 20 years of experience and a PhD, currently lecturing at USTED while guiding ProWIFETA's outreach, mentorship, and industry collaboration efforts.",
   },
   {
     image: "/card/v11.jpg",
@@ -167,13 +169,13 @@ const MEMBERS = [
     image: "/card/v7.jpg",
     name: "Adukwei Sempe Glover",
     role: "Member",
-    bio: "Senior technician in Fashion Design and Textiles at AAMUSTED and CEO of Gasy Signature, with research interests in sustainability, technology adoption, and education in Ghana's fashion industry.",
+    bio: "Senior technician in Fashion Design and Textiles at USTED and CEO of Gasy Signature, with research interests in sustainability, technology adoption, and education in Ghana's fashion industry.",
   },
   {
     image: "/card/v8.jpg",
     name: "Abigail Nkansah",
     role: "Member",
-    bio: "Fashion professional and lecturer at AAMUSTED with experience in teaching, apparel design, and doctoral studies at KNUST.",
+    bio: "Fashion professional and lecturer at USTED with experience in teaching, apparel design, and doctoral studies at KNUST.",
   },
   {
     image: "/card/v12.jpg",
@@ -710,6 +712,15 @@ function LandingPage() {
               >
                 <strong>TikTok</strong>
                 <span>{TIKTOK_HANDLE}</span>
+              </a>
+              <a
+                className="footer-social-chip"
+                href={YOUTUBE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <strong>YouTube</strong>
+                <span>{YOUTUBE_HANDLE}</span>
               </a>
             </div>
           </div>
