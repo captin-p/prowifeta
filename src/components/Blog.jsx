@@ -11,8 +11,6 @@ import "./Blog.css";
 import { EVENT_POSTS, ALL_EVENTS_FILTER, ARCHIVE_FILTERS, getEventPostPath } from "../data/eventPosts.js";
 import { getBlogPageSeo, setPageSeo } from "../utils/seo.js";
 
-const JOIN_URL = "https://forms.gle/SsHAeFN9ncR7PiFz8";
-
 const renderEventDate = (post) =>
   post.dateTime ? <time dateTime={post.dateTime}>{post.displayDate}</time> : post.displayDate;
 
@@ -343,9 +341,9 @@ export default function Blog() {
               </p>
             </div>
             <div className="blog-cta__actions">
-              <a className="blog-primary-action" href={JOIN_URL} target="_blank" rel="noopener noreferrer">
+              <Link className="blog-primary-action" to="/#contact">
                 Join the association
-              </a>
+              </Link>
               <Link className="blog-secondary-action" to="/">
                 Return to landing page
               </Link>

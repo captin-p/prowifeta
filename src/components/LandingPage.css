@@ -282,6 +282,7 @@ button {
   border: 1px solid rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
+  cursor: pointer;
   backdrop-filter: blur(12px);
 }
 
@@ -871,6 +872,39 @@ button {
   line-height: 1.7;
 }
 
+.join-form-copy,
+.join-form-note {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.84);
+  line-height: 1.72;
+}
+
+.join-form-shell {
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  background: #ffffff;
+}
+
+.join-form-frame {
+  display: block;
+  width: 100%;
+  min-height: 1080px;
+  border: 0;
+  background: #ffffff;
+}
+
+.join-inline-link {
+  color: #ffffff;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.join-inline-link:hover,
+.join-inline-link:focus-visible {
+  color: var(--brand-accent);
+}
+
 .footer {
   padding: 2.5rem 0 2.75rem;
   background: #050d18;
@@ -1003,6 +1037,7 @@ a.footer-social-chip:focus-visible {
 .hero-nav-button:focus-visible,
 .hero-scroll-link:focus-visible,
 .join-action:focus-visible,
+.join-inline-link:focus-visible,
 .footer-links button:focus-visible,
 .footer-links a:focus-visible,
 .footer-social-chip:focus-visible {
@@ -1093,6 +1128,10 @@ a.footer-social-chip:focus-visible {
   .hero-secondary-action,
   .join-action {
     width: 100%;
+  }
+
+  .join-form-frame {
+    min-height: 1240px;
   }
 
   .hero-nav {

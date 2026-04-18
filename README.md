@@ -15,6 +15,7 @@ The site presents ProWIFETA as a professional association for women in fashion e
 - Real media added for the Agenda Wear Ghana campaign and Kumasi Art Experience posts
 - Individual event story URLs under `/blog/<event-slug>` for direct sharing and indexing
 - Build-time prerendering for `/`, `/blog`, and each event story page to improve SEO and first-load content
+- Embedded membership application form inside the Join Us section so visitors can start the Google Form on the site
 - Sticky archive side navigation with filters and photo counts for easier event discovery
 - Production build now includes SPA rewrite support for Apache and IIS hosting
 
@@ -77,3 +78,4 @@ For a typical server upload, deploy the contents of `dist/`.
 - Add or edit event stories in `src/data/eventPosts.js`
 - Add new public event images under `public/img/events/`
 - Update landing page copy, members, spotlight content, and social links in `src/components/LandingPage.jsx`
+- Update the Join Us embed and fallback membership link in `src/components/LandingPage.jsx`

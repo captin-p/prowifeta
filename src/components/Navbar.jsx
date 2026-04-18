@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-
-const JOIN_URL = "https://forms.gle/SsHAeFN9ncR7PiFz8";
 const SECTION_LINKS = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
@@ -80,15 +78,13 @@ function Navbar() {
         </ul>
 
         <div className="site-nav__actions">
-          <a
+          <button
+            type="button"
             className="site-nav__button"
-            href={JOIN_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={closeMenu}
+            onClick={() => handleSectionNavigation("contact")}
           >
             Join Us Today
-          </a>
+          </button>
         </div>
 
         <button

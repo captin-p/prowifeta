@@ -19,6 +19,8 @@ import Galleries from "./Galleries.jsx";
 import { getHomePageSeo, setPageSeo } from "../utils/seo.js";
 
 const JOIN_URL = "https://forms.gle/SsHAeFN9ncR7PiFz8";
+const JOIN_EMBED_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSdMVKcMmq4l9L5o5bGypUNR7_dYsgI5bKBdlB9Odwk6AqT3CA/viewform?embedded=true";
 const FACEBOOK_PAGE_NAME = "Professional Women in Fashion Education and Training";
 const TIKTOK_HANDLE = "@ProWIFETA";
 const TIKTOK_URL = "https://www.tiktok.com/@ProWIFETA";
@@ -298,14 +300,13 @@ function LandingPage() {
                       Explore ProWIFETA
                       <ArrowRight size={18} aria-hidden="true" />
                     </button>
-                    <a
+                    <button
+                      type="button"
                       className="hero-secondary-action"
-                      href={JOIN_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      onClick={() => scrollToSection("contact")}
                     >
                       Join the association
-                    </a>
+                    </button>
                   </div>
 
                   <ul className="hero-audience-list" aria-label="Who ProWIFETA is for">
@@ -658,21 +659,30 @@ function LandingPage() {
               </div>
 
               <aside className="join-card">
-                <p className="join-card-kicker">Next step</p>
-                <h3>Ready to become part of ProWIFETA?</h3>
-                <ol className="join-step-list">
-                  <li>Complete the membership application form.</li>
-                  <li>Share your professional background and areas of interest.</li>
-                  <li>Prepare to connect with a stronger network of women in fashion education.</li>
-                </ol>
-                <a
-                  className="join-action"
-                  href={JOIN_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Complete the membership form
-                </a>
+                <p className="join-card-kicker">Membership form</p>
+                <h3>Complete your application here.</h3>
+                <p className="join-form-copy">
+                  Share your background, interests, and role in fashion education without
+                  leaving the site.
+                </p>
+                <div className="join-form-shell">
+                  <iframe
+                    title="ProWIFETA membership application form"
+                    src={JOIN_EMBED_URL}
+                    className="join-form-frame"
+                    allow="storage-access"
+                    loading="lazy"
+                  >
+                    Loading membership form...
+                  </iframe>
+                </div>
+                <p className="join-form-note">
+                  Prefer the full Google Form view?{" "}
+                  <a className="join-inline-link" href={JOIN_URL}>
+                    Open it directly
+                  </a>
+                  .
+                </p>
               </aside>
             </div>
           </div>
@@ -697,9 +707,9 @@ function LandingPage() {
             <button type="button" onClick={() => scrollToSection("goals")}>Focus</button>
             <button type="button" onClick={() => scrollToSection("gallery")}>Gallery</button>
             <button type="button" onClick={() => scrollToSection("members")}>Members</button>
-            <a href={JOIN_URL} target="_blank" rel="noopener noreferrer">
+            <button type="button" onClick={() => scrollToSection("contact")}>
               Join Us
-            </a>
+            </button>
           </div>
 
           <div className="footer-social" aria-label="Official social channels">
