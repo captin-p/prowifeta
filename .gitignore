@@ -25,6 +25,7 @@ dist-ssr
 
 # Local artifacts
 .codex-artifacts/
+.prerender/
 *.zip
 *.rar
 WhatsApp Image 2025-11-02 at 16.12.40_12196569.jpg

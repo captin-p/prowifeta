@@ -16,6 +16,7 @@ import {
 } from "lucide-react";
 import "./LandingPage.css";
 import Galleries from "./Galleries.jsx";
+import { getHomePageSeo, setPageSeo } from "../utils/seo.js";
 
 const JOIN_URL = "https://forms.gle/SsHAeFN9ncR7PiFz8";
 const FACEBOOK_PAGE_NAME = "Professional Women in Fashion Education and Training";
@@ -193,6 +194,10 @@ const getLeadSentence = (text) => {
 function LandingPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const location = useLocation();
+
+  useEffect(() => {
+    setPageSeo(getHomePageSeo());
+  }, []);
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {

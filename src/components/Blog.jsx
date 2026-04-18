@@ -8,6 +8,7 @@ import {
   Newspaper,
 } from "lucide-react";
 import "./Blog.css";
+import { getBlogPageSeo, setPageSeo } from "../utils/seo.js";
 
 const JOIN_URL = "https://forms.gle/SsHAeFN9ncR7PiFz8";
 const ALL_EVENTS_FILTER = "All events";
@@ -301,26 +302,9 @@ export default function Blog() {
   const [selectedFilter, setSelectedFilter] = useState(ALL_EVENTS_FILTER);
 
   useEffect(() => {
-    const previousTitle = document.title;
-    const descriptionTag = document.querySelector('meta[name="description"]');
-    const previousDescription = descriptionTag?.getAttribute("content") ?? "";
-
-    document.title = "ProWIFETA Events & Stories | Fashion Education Blog";
-    if (descriptionTag) {
-      descriptionTag.setAttribute(
-        "content",
-        "Read ProWIFETA event updates, workshop recaps, leadership stories, and photo highlights from women in fashion education and training."
-      );
-    }
+    setPageSeo(getBlogPageSeo());
 
     window.scrollTo({ top: 0, behavior: "auto" });
-
-    return () => {
-      document.title = previousTitle;
-      if (descriptionTag) {
-        descriptionTag.setAttribute("content", previousDescription);
-      }
-    };
   }, []);
 
   useEffect(() => {

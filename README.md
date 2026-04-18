@@ -13,6 +13,7 @@ The site presents ProWIFETA as a professional association for women in fashion e
 - Gallery experience powered by local image assets
 - Expanded event archive covering outreach, advocacy, keynote, awards, and graduation milestones
 - Real media added for the Agenda Wear Ghana campaign and Kumasi Art Experience posts
+- Build-time prerendering for `/` and `/blog` to improve SEO and first-load content
 - Sticky archive side navigation with filters and photo counts for easier event discovery
 - Production build now includes SPA rewrite support for Apache and IIS hosting
 
@@ -51,12 +52,19 @@ npm run build
 
 The production-ready files are generated in `dist/`.
 
+The build now runs in two stages:
+
+- Vite creates the client bundle
+- A prerender step generates static HTML for `/` and `/blog` so those routes ship with real content in the initial response
+
 ## Deployment note
 
 This app uses `BrowserRouter`, so your hosting platform should rewrite routes such as `/blog` back to `index.html`. The repository now includes:
 
 - `public/.htaccess` for Apache-based hosting
 - `public/web.config` for IIS-based hosting
+- prerendered output for `/` in `dist/index.html`
+- prerendered output for `/blog` in `dist/blog/index.html`
 
 For a typical server upload, deploy the contents of `dist/`.
 
