@@ -272,6 +272,14 @@
   color: rgba(255, 255, 255, 0.72);
 }
 
+.blog-hero .blog-meta-row {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.blog-hero--story .blog-hero__title {
+  max-width: 16ch;
+}
+
 .blog-meta-row span {
   display: inline-flex;
   align-items: center;

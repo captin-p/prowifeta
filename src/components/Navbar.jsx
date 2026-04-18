@@ -16,6 +16,7 @@ function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+  const isBlogRoute = location.pathname === "/blog" || location.pathname.startsWith("/blog/");
 
   const closeMenu = () => {
     setIsMenuOpen(false);
@@ -70,9 +71,7 @@ function Navbar() {
           <li className="site-nav__item">
             <Link
               to="/blog"
-              className={`site-nav__link ${
-                location.pathname === "/blog" ? "site-nav__link--active" : ""
-              }`}
+              className={`site-nav__link ${isBlogRoute ? "site-nav__link--active" : ""}`}
               onClick={closeMenu}
             >
               Blog

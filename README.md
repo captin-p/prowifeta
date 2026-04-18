@@ -13,7 +13,8 @@ The site presents ProWIFETA as a professional association for women in fashion e
 - Gallery experience powered by local image assets
 - Expanded event archive covering outreach, advocacy, keynote, awards, and graduation milestones
 - Real media added for the Agenda Wear Ghana campaign and Kumasi Art Experience posts
-- Build-time prerendering for `/` and `/blog` to improve SEO and first-load content
+- Individual event story URLs under `/blog/<event-slug>` for direct sharing and indexing
+- Build-time prerendering for `/`, `/blog`, and each event story page to improve SEO and first-load content
 - Sticky archive side navigation with filters and photo counts for easier event discovery
 - Production build now includes SPA rewrite support for Apache and IIS hosting
 
@@ -22,6 +23,8 @@ The site presents ProWIFETA as a professional association for women in fashion e
 - `src/components/LandingPage.jsx` and `src/components/LandingPage.css`
 - `src/components/Galleries.jsx` and `src/components/Galleries.css`
 - `src/components/Blog.jsx` and `src/components/Blog.css`
+- `src/components/BlogStory.jsx` for single event story routes
+- `src/data/eventPosts.js` for blog archive content and story slugs
 - `public/img/events/edwenase-edit/` for the Edwenase outreach gallery
 - `public/img/events/agenda-wear-media-launch/` for Agenda Wear Ghana media launch photos
 - `public/img/events/agenda-wear-official-launch/` for Agenda Wear Ghana official launch photos
@@ -55,7 +58,7 @@ The production-ready files are generated in `dist/`.
 The build now runs in two stages:
 
 - Vite creates the client bundle
-- A prerender step generates static HTML for `/` and `/blog` so those routes ship with real content in the initial response
+- A prerender step generates static HTML for `/`, `/blog`, and each `/blog/<event-slug>` route so those pages ship with real content in the initial response
 
 ## Deployment note
 
@@ -65,11 +68,12 @@ This app uses `BrowserRouter`, so your hosting platform should rewrite routes su
 - `public/web.config` for IIS-based hosting
 - prerendered output for `/` in `dist/index.html`
 - prerendered output for `/blog` in `dist/blog/index.html`
+- prerendered output for each event story in `dist/blog/<event-slug>/index.html`
 
 For a typical server upload, deploy the contents of `dist/`.
 
 ## Content updates
 
-- Add or edit event stories in `src/components/Blog.jsx`
+- Add or edit event stories in `src/data/eventPosts.js`
 - Add new public event images under `public/img/events/`
 - Update landing page copy, members, spotlight content, and social links in `src/components/LandingPage.jsx`

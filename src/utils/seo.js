@@ -14,7 +14,7 @@ export const BLOG_PAGE_TITLE = "ProWIFETA Blog | Events, Outreach & Fashion Educ
 export const BLOG_PAGE_DESCRIPTION =
   "Read ProWIFETA event updates, outreach programmes, campaign launches, keynote engagements, and fashion education stories from Ghana.";
 
-const toAbsoluteUrl = (value = "/") => {
+export const toAbsoluteUrl = (value = "/") => {
   if (value.startsWith("http://") || value.startsWith("https://")) {
     return value;
   }
@@ -184,4 +184,47 @@ export const getBlogPageSeo = () => ({
     description: BLOG_PAGE_DESCRIPTION,
     image: BLOG_PAGE_IMAGE,
   }),
+});
+
+const isFullDate = (value) => /^\d{4}-\d{2}-\d{2}$/.test(value ?? "");
+
+export const getEventStorySchema = (post) => {
+  const article = {
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.excerpt,
+    image: [toAbsoluteUrl(post.coverImage)],
+    mainEntityOfPage: toAbsoluteUrl(`/blog/${post.id}`),
+    author: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: DEFAULT_IMAGE,
+      },
+    },
+    articleSection: post.category,
+    keywords: [post.category, "Fashion education", "Ghana", "ProWIFETA"],
+  };
+
+  if (isFullDate(post.dateTime)) {
+    article.datePublished = post.dateTime;
+  }
+
+  return [getOrganizationSchema(), getWebsiteSchema(), article];
+};
+
+export const getEventStorySeo = (post) => ({
+  title: `${post.title} | ProWIFETA`,
+  description: post.excerpt,
+  path: `/blog/${post.id}`,
+  image: post.coverImage,
+  type: "article",
+  structuredData: getEventStorySchema(post),
 });

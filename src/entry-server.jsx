@@ -4,19 +4,42 @@ import process from "node:process";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import App from "./App.jsx";
-import { getBlogPageSeo, getHomePageSeo } from "./utils/seo.js";
+import { EVENT_POSTS, getEventPostPath } from "./data/eventPosts.js";
+import {
+  SITE_URL,
+  getBlogPageSeo,
+  getEventStorySeo,
+  getHomePageSeo,
+  toAbsoluteUrl,
+} from "./utils/seo.js";
+
+const BUILD_DATE = new Date().toISOString().slice(0, 10);
 
 const ROUTES = [
   {
     pathname: "/",
     outputPath: "index.html",
     seo: getHomePageSeo(),
+    changefreq: "weekly",
+    priority: "1.0",
+    lastmod: BUILD_DATE,
   },
   {
     pathname: "/blog",
     outputPath: path.join("blog", "index.html"),
     seo: getBlogPageSeo(),
+    changefreq: "weekly",
+    priority: "0.9",
+    lastmod: BUILD_DATE,
   },
+  ...EVENT_POSTS.map((post) => ({
+    pathname: getEventPostPath(post),
+    outputPath: path.join("blog", post.id, "index.html"),
+    seo: getEventStorySeo(post),
+    changefreq: "monthly",
+    priority: "0.8",
+    lastmod: BUILD_DATE,
+  })),
 ];
 
 const escapeHtml = (value) =>
@@ -54,6 +77,11 @@ const applySeoToHtml = (template, seo) => {
     html,
     /<link\s+rel="canonical"\s+href="[^"]*"\s*\/?>/i,
     `<link rel="canonical" href="${escapeHtml(seo.url)}" />`
+  );
+  html = replaceTag(
+    html,
+    /<meta\s+property="og:type"\s+content="[^"]*"\s*\/?>/i,
+    `<meta property="og:type" content="${escapeHtml(seo.type ?? "website")}" />`
   );
   html = replaceTag(
     html,
@@ -111,25 +139,37 @@ const renderRoute = (pathname) =>
     </StaticRouter>
   );
 
+const createSitemapXml = (routes) => `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${routes
+  .map(
+    (route) => `  <url>
+    <loc>${SITE_URL}${route.pathname === "/" ? "/" : route.pathname}</loc>
+    <lastmod>${route.lastmod}</lastmod>
+    <changefreq>${route.changefreq}</changefreq>
+    <priority>${route.priority}</priority>
+  </url>`
+  )
+  .join("\n")}
+</urlset>
+`;
+
 export async function prerender() {
   const distDir = path.resolve(process.cwd(), "dist");
   const template = await fs.readFile(path.join(distDir, "index.html"), "utf8");
 
   for (const route of ROUTES) {
     const appHtml = renderRoute(route.pathname);
-    const html = applySeoToHtml(
-      injectAppHtml(template, appHtml),
-      {
-        ...route.seo,
-        url: `https://prowifeta.com${route.pathname === "/" ? "/" : route.pathname}`,
-        image: route.seo.image.startsWith("http")
-          ? route.seo.image
-          : `https://prowifeta.com${route.seo.image}`,
-      }
-    );
+    const html = applySeoToHtml(injectAppHtml(template, appHtml), {
+      ...route.seo,
+      url: toAbsoluteUrl(route.pathname),
+      image: toAbsoluteUrl(route.seo.image),
+    });
     const outputFile = path.join(distDir, route.outputPath);
 
     await fs.mkdir(path.dirname(outputFile), { recursive: true });
     await fs.writeFile(outputFile, html, "utf8");
   }
+
+  await fs.writeFile(path.join(distDir, "sitemap.xml"), createSitemapXml(ROUTES), "utf8");
 }
