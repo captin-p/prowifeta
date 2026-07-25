@@ -14,6 +14,8 @@ import { getBlogPageSeo, setPageSeo } from "../utils/seo.js";
 const renderEventDate = (post) =>
   post.dateTime ? <time dateTime={post.dateTime}>{post.displayDate}</time> : post.displayDate;
 
+const getPhotoLabel = (count) => `${count} ${count === 1 ? "photo" : "photos"}`;
+
 export default function Blog() {
   const featuredPost = EVENT_POSTS[0];
   const [activePostId, setActivePostId] = useState(() => {
@@ -162,7 +164,7 @@ export default function Blog() {
                       </span>
                       <span>
                         <Camera size={16} aria-hidden="true" />
-                        {post.gallery.length} photos
+                        {getPhotoLabel(post.gallery.length)}
                       </span>
                     </div>
                     <p>{post.excerpt}</p>
@@ -247,7 +249,7 @@ export default function Blog() {
                         <span className="blog-archive-link__copy">
                           <strong>{post.title}</strong>
                           <span>
-                            {post.displayDate} - {post.gallery.length} photos
+                            {post.displayDate} - {getPhotoLabel(post.gallery.length)}
                           </span>
                         </span>
                       </a>

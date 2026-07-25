@@ -6,7 +6,7 @@ export const DEFAULT_DESCRIPTION =
 export const DEFAULT_IMAGE = `${SITE_URL}/img/logo.png`;
 export const HOME_PAGE_IMAGE = "/img/slides/d1.jpg";
 export const BLOG_PAGE_IMAGE =
-  "/img/events/agenda-wear-official-launch/agenda-wear-official-launch-01.jpeg";
+  "/img/events/prowifeta-afin-mou/prowifeta-afin-mou-01.jpeg";
 export const HOME_PAGE_TITLE = DEFAULT_TITLE;
 export const HOME_PAGE_DESCRIPTION =
   "Join ProWIFETA, a Ghana-based network for women in fashion education and training focused on mentorship, advocacy, leadership visibility, and professional development.";

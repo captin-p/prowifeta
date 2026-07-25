@@ -41,7 +41,39 @@ const KUMASI_ART_EXPERIENCE_GALLERY = buildEventGallery("kumasi-art-experience-2
   "Audience members attending the Kumasi Art Experience programme at KNUST.",
 ]);
 
+const PROWIFETA_AFIN_MOU_GALLERY = [
+  {
+    src: "/img/events/prowifeta-afin-mou/prowifeta-afin-mou-01.jpeg",
+    alt: "ProWIFETA and AFIN representatives at the partnership collaboration event.",
+  },
+];
+
 export const EVENT_POSTS = [
+  {
+    id: "prowifeta-afin-fashion-industry-partnership",
+    category: "Industry Partnership",
+    title: "ProWIFETA and AFIN Join Forces to Advance Ghana's Fashion Industry",
+    dateTime: "2026-07",
+    displayDate: "July 2026",
+    location: "Ghana fashion industry partnership",
+    coverImage: PROWIFETA_AFIN_MOU_GALLERY[0].src,
+    excerpt:
+      "ProWIFETA has formalized a collaboration with the Ashanti Fashion Industry Network through an MoU focused on strengthening Ghana's fashion ecosystem.",
+    lead:
+      "The Professional Women in Fashion Education and Training Association has formalized a strategic collaboration with the Ashanti Fashion Industry Network to support a more connected, inclusive, and competitive fashion sector in Ghana.",
+    details: [
+      "The Memorandum of Understanding brings together ProWIFETA's commitment to women's empowerment, fashion education, and skills development with AFIN's mission of connecting and supporting stakeholders across the fashion industry in the Ashanti Region and beyond.",
+      "Through the collaboration, both organizations will promote professional networking, mentorship, capacity building, industry-academia engagement, entrepreneurship development, and innovation across the fashion value chain.",
+      "Joint activities will include training programmes, workshops, conferences, research initiatives, exhibitions, and advocacy efforts designed to create opportunities for fashion professionals, educators, entrepreneurs, and emerging talents.",
+      "The partnership reflects a shared vision for a vibrant fashion industry that empowers women, nurtures creativity, and contributes to sustainable economic growth in Ghana.",
+    ],
+    highlights: [
+      "MoU collaboration between ProWIFETA and the Ashanti Fashion Industry Network.",
+      "Shared focus on mentorship, capacity building, entrepreneurship, and innovation.",
+      "Commitment to an inclusive and globally competitive fashion industry in Ghana.",
+    ],
+    gallery: PROWIFETA_AFIN_MOU_GALLERY,
+  },
   {
     id: "agenda-wear-ghana-campaign-official-launch",
     category: "Campaign & Advocacy",

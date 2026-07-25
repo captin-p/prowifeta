@@ -15,6 +15,8 @@ import { getEventStorySeo, setPageSeo } from "../utils/seo.js";
 const renderEventDate = (post) =>
   post.dateTime ? <time dateTime={post.dateTime}>{post.displayDate}</time> : post.displayDate;
 
+const getPhotoLabel = (count) => `${count} ${count === 1 ? "photo" : "photos"}`;
+
 export default function BlogStory() {
   const { postId } = useParams();
   const post = getEventPostById(postId);
@@ -102,7 +104,7 @@ export default function BlogStory() {
                 </span>
                 <span>
                   <Camera size={16} aria-hidden="true" />
-                  {post.gallery.length} photos
+                  {getPhotoLabel(post.gallery.length)}
                 </span>
               </div>
               <p className="blog-hero__lead">{post.excerpt}</p>
@@ -214,7 +216,7 @@ export default function BlogStory() {
                       </span>
                       <span>
                         <Camera size={16} aria-hidden="true" />
-                        {entry.gallery.length} photos
+                        {getPhotoLabel(entry.gallery.length)}
                       </span>
                     </div>
                     <p>{entry.excerpt}</p>
