@@ -1,5 +1,5 @@
 export const SITE_NAME = "ProWIFETA";
-export const SITE_URL = "https://prowifeta.com";
+export const SITE_URL = "https://prowifeta.org";
 export const DEFAULT_TITLE = "ProWIFETA | Women in Fashion Education & Training in Ghana";
 export const DEFAULT_DESCRIPTION =
   "ProWIFETA connects women in fashion education and training through mentorship, advocacy, networking, leadership visibility, and professional development in Ghana.";
