@@ -5,6 +5,7 @@ import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom";
 import App from "./App.jsx";
 import { EVENT_POSTS, getEventPostPath } from "./data/eventPosts.js";
+import { SITE_PAGES } from "./data/sitePages.js";
 import {
   SITE_URL,
   getBlogPageSeo,
@@ -24,6 +25,20 @@ const ROUTES = [
     priority: "1.0",
     lastmod: BUILD_DATE,
   },
+  ...SITE_PAGES.map((page) => ({
+    pathname: page.path,
+    outputPath: path.join(page.path.replace(/^\//, ""), "index.html"),
+    seo: {
+      title: `${page.navLabel} | ProWIFETA`,
+      description: page.description,
+      path: page.path,
+      image: "/img/logo.png",
+      structuredData: null,
+    },
+    changefreq: page.id === "opportunities" || page.id === "events" ? "weekly" : "monthly",
+    priority: page.id === "membership" || page.id === "programmes" ? "0.9" : "0.8",
+    lastmod: BUILD_DATE,
+  })),
   {
     pathname: "/blog",
     outputPath: path.join("blog", "index.html"),
