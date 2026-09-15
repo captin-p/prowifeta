@@ -4,6 +4,7 @@ import LandingPage from "./components/LandingPage.jsx";
 import Blog from "./components/Blog.jsx";
 import BlogStory from "./components/BlogStory.jsx";
 import SitePage from "./components/SitePage.jsx";
+import { SustainabilityProjects, SustainabilityProject } from "./components/SustainabilityProjects.jsx";
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
         <Route path="/events" element={<SitePage pageId="events" />} />
         <Route path="/membership" element={<SitePage pageId="membership" />} />
         <Route path="/contact" element={<SitePage pageId="contact" />} />
+        <Route path="/projects" element={<SustainabilityProjects />} />
+        <Route path="/projects/:slug" element={<SustainabilityProject />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:postId" element={<BlogStory />} />
       </Routes>
